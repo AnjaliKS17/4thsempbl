@@ -3,7 +3,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 import os
-
+# Python
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'static'
