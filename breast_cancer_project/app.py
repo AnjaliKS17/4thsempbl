@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 UPLOAD_FOLDER = 'static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+#gttS
 model = load_model('models/densenet_model.h5')
 
 classes = ['Benign', 'Malignant', 'Normal']
