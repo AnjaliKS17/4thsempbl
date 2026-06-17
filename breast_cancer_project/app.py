@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 app = Flask(__name__)
-
+#gdgchvyk
 UPLOAD_FOLDER = 'static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
