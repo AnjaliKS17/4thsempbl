@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Nearby Hospital</title>
+</head>
+<body>
+
+<h2>Select Nearby Hospital</h2>
+
+<p>
+    City Selected:
+    <b><span id="cityName"></span></b>
+</p>
+
+<form action="department.html" onsubmit="saveHospital()">
+
+    Hospital:<br>
+    <select id="hospital" required>
+        <option value="">-- Select Hospital --</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Next</button>
+</form>
+
+<script>
+// -------- GET SELECTED CITY ----------
+let city = localStorage.getItem("selectedCity");
+if (city) city = city.trim();
+
+document.getElementById("cityName").innerText = city;
+
+// -------- CITY → HOSPITAL DATA ----------
+const hospitalsByCity = {
+
+    // Bengaluru District cities
+    "Laggere": [
+        "Apollo Hospital",
+        "Fortis Hospital",
+        "Manipal Hospital"
+    ],
+    "Yelahanka": [
+        "Aster CMI Hospital",
+        "Cytecare Hospital"
+    ],
+    "Vidyaranayapura": [
+        "Vydehi Hospital",
+        "Sakra World Hospital"
+    ],
+    "Electronic City": [
+        "Narayana Health",
+        "Springleaf Hospital"
+    ],
+    "Rajajinagar": [
+        "Columbia Asia Hospital",
+        "Manipal Hospital"
+    ],
+
+    // Shivamogga District cities
+    "Shivamogga": [
+        "McGann Hospital",
+        "District Government Hospital"
+    ],
+    "Bhadravati": [
+        "Visvesvaraya Hospital",
+        "City Care Hospital"
+    ],
+    "Sagara": [
+        "Taluk Hospital Sagara",
+        "Sharavathi Hospital"
+    ],
+    "Thirthahalli": [
+        "Government Hospital",
+        "Sahyadri Hospital"
+    ],
+    "Soraba": [
+        "Taluk Hospital Soraba",
+        "Sri Sai Hospital"
+    ],
+
+    // Tumkur District cities
+    "Chikkanayaknahalli": [
+        "Siddhartha Hospital",
+        "District Hospital Tumakuru"
+    ],
+    "Vasdurga": [
+        "Tiptur Government Hospital",
+        "Sri Lakshmi Hospital"
+    ],
+    "Gubbi": [
+        "Government Hospital Gubbi",
+        "Shanthi Hospital"
+    ],
+    "Kunigal": [
+        "Government Hospital Kunigal",
+        "Sri Raghavendra Hospital"
+    ],
+    "Madhugiri": [
+        "Taluk Hospital Madhugiri",
+        "City Hospital"
+    ],
+
+    // Belagavi District cities
+    "Belagavi": [
+        "KLES Hospital",
+        "BIMS Hospital"
+    ],
+    "Gokak": [
+        "Government Hospital Gokak",
+        "Ashoka Hospital"
+    ],
+    "Athani": [
+        "Government Hospital Athani",
+        "Vijay Hospital"
+    ],
+    "Chikkodi": [
+        "Government Hospital Chikkodi",
+        "City Care Hospital"
+    ],
+    "Bailhongal": [
+        "Government Hospital Bailhongal",
+        "Sanjeevini Hospital"
+    ],
+
+    // Udupi District cities
+    "Udupi": [
+        "Adarsha Hospital",
+        "District Hospital Udupi"
+    ],
+    "Manipal": [
+        "Kasturba Hospital",
+        "Manipal Hospital"
+    ],
+    "Kundapura": [
+        "Government Hospital Kundapura",
+        "Chinmaya Hospital"
+    ],
+    "Karkala": [
+        "Government Hospital Karkala",
+        "City Hospital"
+    ],
+    "Brahmavar": [
+        "Government Hospital Brahmavar",
+        "Sri Durga Hospital"
+    ]
+};
+
+// -------- LOAD HOSPITALS ----------
+let hospitalSelect = document.getElementById("hospital");
+
+if (hospitalsByCity[city]) {
+    hospitalsByCity[city].forEach(h => {
+        let opt = document.createElement("option");
+        opt.value = h;
+        opt.text = h;
+        hospitalSelect.add(opt);
+    });
+} else {
+    let opt = document.createElement("option");
+    opt.text = "Hospitals not found for selected city";
+    hospitalSelect.add(opt);
+}
+
+// -------- SAVE SELECTED HOSPITAL ----------
+function saveHospital() {
+    localStorage.setItem(
+        "hospital",
+        document.getElementById("hospital").value
+    );
+}
+</script>
+
+</body>
+</html>
