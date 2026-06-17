@@ -12,7 +12,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 model = load_model('models/densenet_model.h5')
 
 classes = ['Benign', 'Malignant', 'Normal']
-
+#fdguvijyht
 @app.route('/')
 def home():
     return render_template('index.html')
